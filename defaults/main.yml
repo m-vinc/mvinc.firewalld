@@ -1,0 +1,18 @@
+---
+# defaults file for mvinc.firewalld
+# mvinc_firewalld_zones: {}
+mvinc_firewalld_rules: []
+mvinc_firewalld_additional_rules: []
+
+#mvinc_firewalld_zones:
+#  home:
+#    name: home
+#    sources:
+#    - 172.16.0.0/24
+#    - fec0::/10 
+#
+#mvinc_firewalld_rules:
+#- { zone: home, port: "8080/tcp", state: "enabled", permanent: true }
+#
+##mvinc_firewalld_additional_rules:
+#- { zone: home, port: "1234/tcp", state: "enabled", permanent: true }

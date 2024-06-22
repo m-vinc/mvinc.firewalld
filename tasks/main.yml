@@ -1,0 +1,13 @@
+---
+# tasks file for mvinc.firewalld
+- name: Include OS-specific variables.
+  include_vars:
+    file: "defaults/{{ ansible_distribution }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
+  
+- name: Setup firewalld
+  ansible.builtin.include_tasks: setup.yml
+  tags: ["setup"]
+
+- name: Setting up configuration
+  ansible.builtin.include_tasks: configuration.yml
+  tags: ["configuration"]

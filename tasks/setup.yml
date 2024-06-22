@@ -1,0 +1,10 @@
+- name: Ensure firewalld is installed
+  ansible.builtin.package:
+    name: "{{ mvinc_firewalld_package }}"
+    state: present
+
+- name: Ensure firewalld is enable and running
+  ansible.builtin.service:
+    name: "{{ mvinc_firewalld_service_name }}"
+    enabled: true
+    state: reloaded

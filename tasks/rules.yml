@@ -1,0 +1,9 @@
+- name: Applying rules
+  ansible.posix.firewalld:
+    zone: "{{ item.zone }}"
+    state: "{{ item.state }}"
+    port: "{{ item.port | default(omit) }}"
+    service: "{{ item.service | default(omit) }}"
+    permanent: true
+  loop: "{{ mvinc_firewalld_rules + (mvinc_firewalld_additional_rules | default([])) }}"
+

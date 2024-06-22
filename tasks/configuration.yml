@@ -1,0 +1,12 @@
+- name: Applying zones
+  include_tasks: "zone.yml"
+  loop: "{{ mvinc_firewalld_zones | dict2items }}"
+
+- name: Applying zones
+  include_tasks: "rules.yml"
+
+- name: Ensure firewalld is enable, reloaded and running
+  ansible.builtin.service:
+    name: "{{ mvinc_firewalld_service_name }}"
+    enabled: true
+    state: reloaded

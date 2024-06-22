@@ -1,0 +1,19 @@
+- name: "debug show zone"
+  debug:
+    msg: "item: {{ item }}"
+- name: "[{{ item.key }}] Applying zone"
+  ansible.posix.firewalld:
+    zone: "{{ item.key }}"
+    permanent: true
+    state: present
+
+- name: "[{{ item.key }}] Applying sources"
+  ansible.posix.firewalld:
+    zone: "{{ item.key }}"
+    source: "{{ source }}"
+    permanent: true
+    state: enabled
+  loop: "{{ item.value.sources }}"
+  loop_control:
+    loop_var: "source"
+
